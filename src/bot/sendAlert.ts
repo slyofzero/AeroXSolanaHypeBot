@@ -161,7 +161,7 @@ export async function sendAlert(pairs: PhotonPairData[]) {
           : `Deployer owns ${(100 - lp_burned_perc).toFixed(0)}% of LP`;
 
         // Text
-        const text = `Powered By [Solana Hype Alerts](https://t.me/SolanaHypeTokenAlerts) \\| Hype Alert
+        const text = `Powered By [AeroX Hype Alerts](https://t.me/AeroXSolanaHypeBot) \\| Hype Alert
       
 ${hardCleanUpBotMessage(name)} \\| [${hardCleanUpBotMessage(
           symbol
