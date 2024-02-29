@@ -1,7 +1,6 @@
 import {
   AGE_THRESHOLD,
   LIQUIDITY_THRESHOLD,
-  PUBLIC_CHANNEL_DELAY,
   VOLUME_THRESHOLD,
 } from "@/utils/constants";
 import {
@@ -12,7 +11,7 @@ import {
 import { hypeNewPairs, setIndexedTokens } from "@/vars/tokens";
 import { teleBot } from "..";
 import { cleanUpBotMessage, hardCleanUpBotMessage } from "@/utils/bot";
-import { CHANNEL_ID, PUBLIC_CHANNEL_ID } from "@/utils/env";
+import { CHANNEL_ID } from "@/utils/env";
 import { errorHandler, log } from "@/utils/handlers";
 import moment from "moment";
 import { PhotonPairData } from "@/types/livePairs";
@@ -202,15 +201,6 @@ Powered By [Solana Hype Alerts](https://t.me/SolanaHypeTokenAlerts)${promoText}`
             // @ts-expect-error Param not found
             disable_web_page_preview: true,
           });
-
-          setTimeout(() => {
-            if (PUBLIC_CHANNEL_ID)
-              teleBot.api.sendMessage(PUBLIC_CHANNEL_ID, text, {
-                parse_mode: "MarkdownV2",
-                // @ts-expect-error Param not found
-                disable_web_page_preview: true,
-              });
-          }, PUBLIC_CHANNEL_DELAY * 1e3);
 
           hypeNewPairs[tokenAddress] = {
             startTime: now,
