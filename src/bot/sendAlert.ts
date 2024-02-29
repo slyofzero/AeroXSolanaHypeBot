@@ -193,7 +193,7 @@ Buy:
 [Photon](${photonLink}) \\| [SolTradeBot](${solanaTradingBotLink}) \\| [BonkBot](${bonkBotLink})
 [Magnum](${magnumLink}) \\| [BananaGun](${bananaLink}) \\| [Unibot](${unibot})
 
-Powered By [Solana Hype Alerts](https://t.me/SolanaHypeTokenAlerts)${promoText}`;
+Powered By [AeroX Hype Alerts](https://t.me/AeroXSolanaHypeBot)${promoText}`;
 
         try {
           const message = await teleBot.api.sendMessage(CHANNEL_ID, text, {
