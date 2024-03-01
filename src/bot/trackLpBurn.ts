@@ -33,7 +33,9 @@ export async function trackLpBurn(pair: PhotonPairData) {
 
       const text = `Powered By [AeroX Hype Alerts](https://t.me/AeroXSolanaHypeBot)
       
-[${hardCleanUpBotMessage(symbol)}](${tokenLink}) LP tokens burnt 🔥🔥🔥 
+🔥🔥🔥🔥🔥🔥🔥
+[${hardCleanUpBotMessage(symbol)}](${tokenLink}) LP tokens burnt
+🔥🔥🔥🔥🔥🔥🔥
 
 [Photon](${photonLink})
 [DexScreener](${dexScreenerLink}) \\| [BirdEye](${birdEyeLink})${promoText}`;

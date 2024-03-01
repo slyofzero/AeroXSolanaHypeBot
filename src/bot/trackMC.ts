@@ -69,7 +69,7 @@ export async function trackMC() {
 
 [${hardCleanUpBotMessage(symbol)}](${tokenLink}) jumped by ${cleanUpBotMessage(
             exactIncrease
-          )}x\\!\\!\\!
+          )}x 🚀🚀
 
 💲 MC when found: $${cleanUpBotMessage(formatToInternational(initialMC))}
 💲 MC now: $${cleanUpBotMessage(formatToInternational(currentMC))}
