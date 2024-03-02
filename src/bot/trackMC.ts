@@ -63,7 +63,7 @@ export async function trackMC() {
           const tokenLink = `https://solscan.io/token/${tokenAddress}`;
           const dexScreenerLink = `https://dexscreener.com/solana/${address}`;
           const birdEyeLink = `https://birdeye.so/token/${tokenAddress}?chain=solana`;
-          const photonLink = `https://photon-sol.tinyastro.io/en/r/@solhypealerts/${tokenAddress}`;
+          // const photonLink = `https://photon-sol.tinyastro.io/en/r/@solhypealerts/${tokenAddress}`;
 
           const text = `Powered By [AeroX Hype Alerts](https://t.me/AeroXSolanaHypeBot)
 
@@ -71,10 +71,10 @@ export async function trackMC() {
             exactIncrease
           )}x 🚀🚀
 
-💲 MC when found: $${cleanUpBotMessage(formatToInternational(initialMC))}
-💲 MC now: $${cleanUpBotMessage(formatToInternational(currentMC))}
+🏦 MC when found: $${cleanUpBotMessage(formatToInternational(initialMC))}
+🏦 MC now: $${cleanUpBotMessage(formatToInternational(currentMC))}
 
-[Photon](${photonLink})
+Charts:
 [DexScreener](${dexScreenerLink}) \\| [BirdEye](${birdEyeLink})${promoText}`;
 
           teleBot.api
