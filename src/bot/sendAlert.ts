@@ -37,6 +37,7 @@ export async function sendAlert(pairs: PhotonPairData[]) {
         cur_liq,
         init_liq,
         fdv: marketCap,
+        audit,
       } = pair.attributes;
 
       newIndexedTokens.push(tokenAddress);
@@ -46,6 +47,9 @@ export async function sendAlert(pairs: PhotonPairData[]) {
         Number(age.replace("a minutes ago", "1")) ||
         Number(age.replace("a few seconds ago", "1"));
 
+      const { lp_burned_perc } = audit;
+      const isLpStatusOkay = lp_burned_perc === 100;
+
       if (hypeNewPairs[tokenAddress]) {
         trackLpBurn(pair);
       } else if (
@@ -54,7 +58,8 @@ export async function sendAlert(pairs: PhotonPairData[]) {
         parseFloat(init_liq.quote) >= LIQUIDITY_THRESHOLD &&
         parseFloat(init_liq.quote) <= 50 &&
         marketCap > 0 &&
-        cur_liq.quote > parseFloat(init_liq.quote)
+        cur_liq.quote > parseFloat(init_liq.quote) &&
+        isLpStatusOkay
       ) {
         const {
           address,
@@ -62,7 +67,6 @@ export async function sendAlert(pairs: PhotonPairData[]) {
           symbol,
           name,
           init_liq,
-          audit,
         } = pair.attributes;
 
         const token = new PublicKey(tokenAddress);
@@ -70,16 +74,6 @@ export async function sendAlert(pairs: PhotonPairData[]) {
         const totalSupply = (
           await solanaConnection.getTokenSupply(new PublicKey(tokenAddress))
         ).value.uiAmount;
-
-        // const priceData = // eslint-disable-next-line
-        //   (
-        //     await apiFetcher(
-        //       `https://api.dexscreener.com/latest/dex/tokens/${tokenAddress}`
-        //     )
-        //   ).data as any;
-        // const price = parseFloat(priceData.pairs.at(0).priceUsd);
-        // const circulatingSupply = marketCap / price;
-        // console.log(circulatingSupply);
 
         const balances = addresses.value.slice(0, 10);
         let top2Hold = 0;
@@ -142,10 +136,9 @@ export async function sendAlert(pairs: PhotonPairData[]) {
         const hypeScore = getRandomInteger();
 
         // Audit
-        const { lp_burned_perc, mint_authority } = audit;
+        const { mint_authority } = audit;
         const mintStatus = !mint_authority ? "🟥" : "🟩";
         const mintText = !mint_authority ? "Enabled" : "Disabled";
-        const isLpStatusOkay = lp_burned_perc === 100;
         const lpStatus = isLpStatusOkay ? "🟩" : "⚠️";
         const issues = Number(!isLpStatusOkay) + Number(!mint_authority);
         const issuesText = issues === 1 ? `1 issue` : `${issues} issues`;
