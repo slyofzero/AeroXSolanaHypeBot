@@ -17,7 +17,6 @@ import moment from "moment";
 import { PhotonPairData } from "@/types/livePairs";
 import { PublicKey } from "@solana/web3.js";
 import { solanaConnection } from "@/rpc";
-import { trackLpBurn } from "./trackLpBurn";
 import { promoText } from "@/vars/promo";
 
 export async function sendAlert(pairs: PhotonPairData[]) {
@@ -50,9 +49,7 @@ export async function sendAlert(pairs: PhotonPairData[]) {
       const { lp_burned_perc } = audit;
       const isLpStatusOkay = lp_burned_perc === 100;
 
-      if (hypeNewPairs[tokenAddress]) {
-        trackLpBurn(pair);
-      } else if (
+      if (
         volume >= VOLUME_THRESHOLD &&
         ageMinutes <= AGE_THRESHOLD &&
         parseFloat(init_liq.quote) >= LIQUIDITY_THRESHOLD &&
