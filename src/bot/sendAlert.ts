@@ -161,7 +161,7 @@ export async function sendAlert(pairs: PhotonPairData[]) {
           : `Deployer owns ${(100 - lp_burned_perc).toFixed(0)}% of LP`;
 
         // Text
-        const text = `Powered By [AeroX Hype Alerts](https://t.me/AeroXSolanaHypeBot) \\| Hype Alert
+        const text = `Powered By [VolumeAI](https://t.me/SolanaVolumeBot) \\| Hype Alert
       
 ${hardCleanUpBotMessage(name)} \\| [${hardCleanUpBotMessage(
           symbol
@@ -193,7 +193,7 @@ Buy:
 [Photon](${photonLink}) \\| [SolTradeBot](${solanaTradingBotLink}) \\| [BonkBot](${bonkBotLink})
 [Magnum](${magnumLink}) \\| [BananaGun](${bananaLink}) \\| [Unibot](${unibot})
 
-Powered By [AeroX Hype Alerts](https://t.me/AeroXSolanaHypeBot)${promoText}`;
+Powered By [VolumeAI](https://t.me/SolanaVolumeBot)${promoText}`;
 
         try {
           const message = await teleBot.api.sendMessage(CHANNEL_ID, text, {
