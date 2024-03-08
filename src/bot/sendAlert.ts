@@ -57,7 +57,8 @@ export async function sendAlert(pairs: PhotonPairData[]) {
         parseFloat(init_liq.quote) <= 50 &&
         marketCap > 0 &&
         cur_liq.quote > parseFloat(init_liq.quote) &&
-        isLpStatusOkay
+        isLpStatusOkay &&
+        !hypeNewPairs[tokenAddress]
       ) {
         const {
           address,
