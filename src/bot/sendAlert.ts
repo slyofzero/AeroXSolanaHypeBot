@@ -18,6 +18,7 @@ import { PhotonPairData } from "@/types/livePairs";
 import { PublicKey } from "@solana/web3.js";
 import { solanaConnection } from "@/rpc";
 import { promoText } from "@/vars/promo";
+import { InlineKeyboard } from "grammy";
 
 export async function sendAlert(pairs: PhotonPairData[]) {
   try {
@@ -179,10 +180,6 @@ Security: [RugCheck](${rugCheckLink})
 
 📊 [Photon](${photonLink}) \\| 📊 [DexScreener](${dexScreenerLink})
 
-Buy:
-[Photon](${photonLink}) \\| [SolTradeBot](${solanaTradingBotLink}) \\| [BonkBot](${bonkBotLink})
-[Magnum](${magnumLink}) \\| [BananaGun](${bananaLink}) \\| [Unibot](${unibot})
-
 Powered By [VolumeAI](https://t.me/SolanaVolumeBot)${promoText}`;
 
         try {
@@ -190,6 +187,15 @@ Powered By [VolumeAI](https://t.me/SolanaVolumeBot)${promoText}`;
             parse_mode: "MarkdownV2",
             // @ts-expect-error Param not found
             disable_web_page_preview: true,
+            reply_markup: new InlineKeyboard()
+              .url("🚀 Photon", photonLink)
+              .url("🟣 SolTradeBot", solanaTradingBotLink)
+              .row()
+              .url("🐶 BonkBot", bonkBotLink)
+              .url("🔫 Magnum", magnumLink)
+              .row()
+              .url("🍌 Banana", bananaLink)
+              .url("🦄 Unibot", unibot),
           });
 
           hypeNewPairs[tokenAddress] = {
